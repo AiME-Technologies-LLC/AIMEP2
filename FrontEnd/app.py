@@ -10,7 +10,7 @@ def display_df(filepath):
 def title():
     col1, mid, col2 = st.columns([0.6,0.5,20], gap="medium")
     with col1:
-        st.image('FrontEnd\images\logo.png', width=77)
+        st.image('C:/Users/prana/Documents/GitHub/AIMEP2/FrontEnd/images/logo.png', width=77)
     with mid:
         st.write("  ")
     with col2:
@@ -24,7 +24,7 @@ def addComptoSideBar(comp):
 
 st.set_page_config(
         page_title="AIME",
-        page_icon="FrontEnd\images\logo.png",
+        page_icon='C:/Users/prana/Documents/GitHub/AIMEP2/FrontEnd/images/logo.png',
         layout="wide",
         initial_sidebar_state="expanded"
     )
