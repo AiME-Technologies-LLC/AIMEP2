@@ -11,6 +11,7 @@ class FirebaseHandler:
 
         self.db = firestore.client()
     
+    
     def makeNewCollection(self, collectionName):
         if collectionName in self.db.collections():
             return False
@@ -23,10 +24,14 @@ class FirebaseHandler:
 
         doc_ref.set(data)
     def editDocument(self, collectionName, documentName, data):
+        #check if the document exists
+        if not self.db.collection(collectionName).document(documentName).get().exists:
+            return False
         doc_ref = self.db.collection(collectionName).document(documentName)
         doc_ref.update(data)
-
-store = FirebaseHandler("serviceAccount.json")
-
-store.makeNewCollection("Test")
-store.editDocument("Users",'@PranavDesu', {u'Password': u'Pranav Desu'})
+        return True
+    def getDoc(self, collectionName, documentName):
+        if not self.db.collection(collectionName).document(documentName).get().exists:
+            return {}
+        else: return self.db.collection(collectionName).document(documentName).get()
+    
