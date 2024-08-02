@@ -1,38 +1,69 @@
 import streamlit as st
 import pandas as pd
-import Apollo_flask
 import firebase_admin
 from firebase_admin import credentials, firestore
+import requests
 
-def read_firestore_database():
-    docs = leads.stream()
+
+BACKEND_URL = 'http://127.0.0.1:5000'
+session  = st.session_state
+
+if 'loggedIn' not in session:
+    session.loggedIn = False
+    st.switch_page("pages/login.py")
     
-    for doc in docs:
-        print(f"Document ID: {doc.id}")
-        print(f"Document Data: {doc.to_dict()}")
-        print()
+if session['loggedIn'] == False:
+    st.switch_page("pages/login.py")
 
-def edit_firestore_database(uploaded_file):
-    if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file)
-        cleaned_df = Apollo_flask.connect(uploaded_file)
-        
-        data = {
-            "name": "John Doe",
-            "email": "john.doe@example.com",
-            "phone": "+1234567890"
-        }
-        
-        leads.document("Test Successful").set(data)
-        
-        print("Data added successfully.")
 
-cred = credentials.Certificate("serviceAccount.json")
-firebase_admin.initialize_app(cred)
-firestore_db = firestore.client()
+def connect(file):
+    if file == "a":
+        print("apples")
+        
+        return
+    data = pd.read_csv("names.csv")
+    
+    data = data.rename(columns={'zp_xVJ20': 'Owner Name',
+                                'zp-link href': 'Owner LinkedIn',
+                                'zp_xVJ20 href': 'Apollo Link',
+                                'zp_Y6y8d 2': 'Location',
+                                'zp_Y6y8d 3': 'Number of Employees',
+                                'zp_Y6y8d': 'Role', 
+                                'zp_WM8e5': 'Company Name', 
+                                'zp_IL7J9 src': 'Logo', 
+                                'zp-link href 2': 'Website',
+                                'zp-link href 3': 'Company LinkedIn',
+                                'zp-link href 4': 'Facebook',
+                                'zp_WM8e5 href': 'Owner Apollo',
+                                'zp-link href 5': 'Twitter',
+                                'zp-link': 'Email'
+                               })
+    
+    data = data.rename(columns={'zp_PHqgZ': 'Data 1',
+                                'zp_yc3J_': 'Data 2',
+                                'zp_yc3J_ 2': 'Data 3',
+                                'zp_yc3J_ 3': 'Data 4',
+                                'zp_yc3J_ 4': 'Data 5',
+                                'zp_yc3J_ 5': 'Data 6',
+                                'zp_yc3J_ 6': 'Data 7',
+                                'zp_yc3J_ 7': 'Data 8',
+                                'zp_yc3J_ 8': 'Data 9',
+                                'zp_yc3J_ 9': 'Data 10',
+                                'zp_yc3J_ 10': 'Data 11',
+                                'zp_yc3J_ 11': 'Data 12',
+                                'zp_yc3J_ 12': 'Data 13',
+                                'zp_yc3J_ 13': 'Data 14',
+                                'zp_yc3J_ 14': 'Data 15',
+                                'zp_lm1kV': 'Data 16'
+                               })
+    
+    
 
-user = firestore_db.collection("Users").document("@PranavDesu")
-leads = user.collection("Leads")
+    return data
+
+
+
+
 
 def display_df(filepath):
     df = pd.read_csv(filepath)
@@ -43,7 +74,7 @@ def display_df(filepath):
 def title():
     col1, mid, col2 = st.columns([0.6,0.5,20], gap="medium")
     with col1:
-        st.image('FrontEnd\images\logo.png', width=77)
+        st.image("images/logo.png", width=77)
         pass
     with mid:
         st.write("  ")
@@ -58,9 +89,10 @@ def addComptoSideBar(comp):
 
 st.set_page_config(
         page_title="AIME",
-        page_icon="FrontEnd\images\logo.png",
+        page_icon="images/logo.png",
         layout="wide",
-        initial_sidebar_state="expanded"
+        #have the intial siberbar state as not expanded
+        initial_sidebar_state="collapsed"
     )
 
 
@@ -71,38 +103,21 @@ title()
 
 
 
+
+import os
+
 uploaded_file = st.file_uploader("Upload Leads (.CSV)")
+upload_button = st.button("Upload")
 
-if uploaded_file is not None:
-    try:
-        # Check the file extension to use the correct pandas function
-        if uploaded_file.name.endswith('.csv'):
-            # For CSV files
-            df = pd.read_csv(uploaded_file)
-            cleaned_df = Apollo_flask.connect(uploaded_file)
-            
-            data_list = ["Owner Name", "Apollo Link", "Owner LinkedIn", "Role", "Logo", "Company Name", "Owner Apollo",
-                         "Website", "Company LinkedIn", "Facebook", "Twitter", "Location", "Number of Employees", "Email",
-                         "Data 1", "Data 2", "Data 3", "Data 4", "Data 5", "Data 6", "Data 7", "Data 8", "Data 9", "Data 10",
-                         "Data 11", "Data 12", "Data 13", "Data 14", "Data 15", "Data 16"]
-
-            i = 0
-            for index, row in cleaned_df.iterrows():
-                data = {}
-                for column in data_list:
-                    
-                    data[column] = row[column]
-                leads.document(row["Company Name"]).set(data)
-                i += 1
-            
-        elif uploaded_file.name.endswith('.xlsx'):
-            # For Excel files
-            df = pd.read_excel(uploaded_file)
-
-        # Display the dataframe
-        st.write(df)
-        st.write(cleaned_df)
-    except Exception as e:
-        st.write("Error reading file:", e)
-    
-firebase_admin.delete_app(firebase_admin.get_app())
+if upload_button:
+    if uploaded_file is not None:
+        #save the file in the filesystem as temp.csv
+        with open('temp.csv', 'wb') as f:
+            f.write(uploaded_file.getvalue())
+            #send the file to the backend
+            response = session.flask_session.post(f'{BACKEND_URL}/upload', files={'file': open('temp.csv', 'rb')})
+            st.write(response.text)
+            #remove the file from the filesystem
+            os.remove('temp.csv')
+    else:
+        st.write("Please upload a file")

@@ -1,12 +1,15 @@
-import os
+
 from twilio.rest import Client
 
-account_sid = 'ACcec52275b4d16d69184ae20eaaff275d'
-auth_token = '524dafe935807337065d55fb36020653'
+account_sid = 'ACad30301d9bac4e7e64aeaa288523c423'
+auth_token = '686c0076ba66592f71b70da211d6fc7c'
 client = Client(account_sid, auth_token)
 
-message = client.messages.create(
-                     from_ = '+18662837290',
-                     body = "Hi, this is a test message for AiME Technologies",
-                     to = '+16786205329' 
+message = client.messages \
+                .create(
+                     body="Join Earth's mightiest heroes. Like Kevin Bacon.",
+                     from_='+18669412767',
+                     to='+19452162299'
                  )
+
+print(message.sid)

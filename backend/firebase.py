@@ -30,8 +30,21 @@ class FirebaseHandler:
         doc_ref = self.db.collection(collectionName).document(documentName)
         doc_ref.update(data)
         return True
+    
+    def check_document_exists(self, collectionName, documentName):
+        return self.db.collection(collectionName).document(documentName).get().exists
+    
     def getDoc(self, collectionName, documentName):
         if not self.db.collection(collectionName).document(documentName).get().exists:
             return {}
         else: return self.db.collection(collectionName).document(documentName).get()
     
+    def getFeild(self, collectionName, documentName, feild):
+        if not self.db.collection(collectionName).document(documentName).get().exists:
+            return None
+        else: 
+            if feild not in self.db.collection(collectionName).document(documentName).get().to_dict():
+                return None
+            
+            return self.db.collection(collectionName).document(documentName).get().to_dict()[feild]
+        return None
