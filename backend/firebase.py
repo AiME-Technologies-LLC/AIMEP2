@@ -48,3 +48,10 @@ class FirebaseHandler:
             
             return self.db.collection(collectionName).document(documentName).get().to_dict()[feild]
         return None
+    
+    
+    
+    
+    
+    
+    
