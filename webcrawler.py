@@ -127,7 +127,10 @@ def get_last_message():
     try:
         pd = driver.find_element(By.XPATH, '/html/body/div[5]/div[3]/div[2]/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[1]/ul/li[last()-2]/div/div[2]/div/div/p')
     except:
-        pd = driver.find_element(By.XPATH, '/html/body/div[5]/div[3]/div[2]/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[1]/ul/li[last()-3]/div/div[2]/div/div/p')
+        try:
+            pd = driver.find_element(By.XPATH, '/html/body/div[5]/div[3]/div[2]/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[1]/ul/li[last()-1]/div/div[2]/div/div/p')
+        except:
+            pd = driver.find_element(By.XPATH, '/html/body/div[5]/div[3]/div[2]/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[1]/ul/li[last()-3]/div/div[2]/div/div/p')
     return pd.text
 
 def sendMessage(msg):
@@ -239,7 +242,13 @@ while n != 0:
         try:
             k = driver.find_element(By.XPATH, '/html/body/div[5]/div[3]/div[2]/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[1]/ul/li[last()-2]/div/div[1]/span[1]/a/span')
         except:
-            k = driver.find_element(By.XPATH, '/html/body/div[5]/div[3]/div[2]/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[1]/ul/li[last()-3]/div/div[1]/span[1]/a/span')
+            
+            try:
+                k = driver.find_element(By.XPATH, '/html/body/div[5]/div[3]/div[2]/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[1]/ul/li[last()-3]/div/div[1]/span[1]/a/span')
+                
+            except:
+                k = driver.find_element(By.XPATH, '/html/body/div[5]/div[3]/div[2]/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[1]/ul/li[last()-4]/div/div[1]/span[1]/a/span')
+                
     if k.text == user:
         print("The last message is from the user")
     else:
