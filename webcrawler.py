@@ -247,7 +247,10 @@ while n != 0:
                 k = driver.find_element(By.XPATH, '/html/body/div[5]/div[3]/div[2]/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[1]/ul/li[last()-3]/div/div[1]/span[1]/a/span')
                 
             except:
-                k = driver.find_element(By.XPATH, '/html/body/div[5]/div[3]/div[2]/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[1]/ul/li[last()-4]/div/div[1]/span[1]/a/span')
+                try :
+                    k = driver.find_element(By.XPATH, '/html/body/div[5]/div[3]/div[2]/div/div/main/div/div[2]/div[2]/div[1]/div/div[4]/div[1]/ul/li[last()-4]/div/div[1]/span[1]/a/span')
+                except:
+                    continue
                 
     if k.text == user:
         print("The last message is from the user")
@@ -261,5 +264,5 @@ while n != 0:
         #     #break the loop
         #     break
         sendMessage(output)
-        time.sleep(40)
+        time.sleep(10)
         n-=1
