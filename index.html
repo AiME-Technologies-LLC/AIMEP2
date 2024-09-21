@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,29 +21,61 @@
         AOS.init();
     </script>
 
+    <!-- SEO: Schema Markup -->
+    <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "Organization",
+          "name": "AiME Technologies",
+          "url": "https://www.aimetechnologies.com",
+          "logo": "https://www.aimetechnologies.com/images/aime.png",
+          "description": "A B2B SaaS specializing in the automation of personalized messaging on scalable platforms to convert browsers into buyers.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "AiME Technologies",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.aimetechnologies.com/images/aime.png"
+            }
+          },
+          "headline": "AiME Technologies",
+          "author": "AiME Technologies",
+          "datePublished": "2024-07-25",
+          "image": "https://www.aimetechnologies.com/images/aime.png"
+        }
+    </script>
+    
     <!-- Cursor -->
-     <div class="cursor"></div>
+    <div class="cursor"></div>
 
     <!-- Navigation Bar -->
-    <header class="navBar">
-        <a href="index.html"><img class="navLogo" src="images/navBar/aimeLogo.png"></a>
-        <nav>
+    <header class="navbar">
+        <a href="index.html"><img class="navLogo" src="images/navBar/aimeLogoColor.png"></a>
+        
+        <nav class="navContainer">
             <ul class="navLinks">
-                <li class="prod"><a href="#infoCards">Our Product</a></li>
-                <li><a href="#compatibility">Compatibility</a></li>
-                <li><a href="#reviews">Reviews</a></li>
-                <li><a href="#pricing">Pricing</a></li>
+                <div class="section1">
+                    <li><a href="#product">Our Product</a></li>
+                    <li><a href="#compatibility">Compatibility</a></li>
+                </div>
+
+                <a href="#landing"><img src="images/aime.png" class="navLogo2"></a>
+
+                <div class="section2">
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </div>
             </ul>
         </nav>
+        
         <div class="headerButtons">
-            <a href="#"><button class="contact">Contact Us</button></a>
             <a href="external/login.html"><button class="login">Log In</button></a>
             <a href="#"><img src="images/navBar/menuIcon.png" class="menu"></a>
         </div>
     </header>
 
     <!-- Landing -->
-    <div class="landing">
+    <div class="landing" id="landing">
         <video autoplay muted loop class="backgroundVideo">
             <source src="images/landing/movingDots.mp4" type="video/mp4">
         </video>
@@ -71,128 +103,150 @@
         <!-- Our Product: Statistics -->
          <div class="companyStats">
             <ul>
-                <li>
+                <li data-aos="fade-right" data-aos-duration="1000">
                     <h1>Placeholder</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </li>
-                <li>
+                <li data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                     <h1>Placeholder</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </li>
-                <li>
+                <li data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
                     <h1>Placeholder</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </li>
             </ul>
-         </div>
-
-        <!-- Our Product: Carousel -->
-        <div class="carousel-wrapper">
-            <button class="carousel-button prev" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="1000"></button>
-            <div class="slds" id="slds">
-                <img class="sld1" src="images/carousel/sld1.png" data-aos="fade-right" data-aos-duration="2000">
-                <img class="sld2" src="images/carousel/sld2.png" data-aos="fade-left" data-aos-duration="3000">
-                <img class="sld3" src="images/carousel/sld3.png">
-                <img class="sld4" src="images/carousel/sld4.png">
-                <img class="sld5" src="images/carousel/sld5.png">
-            </div>
-            <button class="carousel-button next" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="1000"></button>
-        </div>
-
-        <!-- Our Product: Synopsis -->
-        <div id="infoCards" class="infoCards">
-            <div class="what" data-aos="fade-right" data-aos-duration="1000"> <!-- whatWeDo -->
-                <h1><em>What</em> we do</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                
-                <img src="images/synopsis/img1.png" data-aos="fade-left" data-aos-duration="1000">
-            </div>
-
-            <div class="how" data-aos="fade-left" data-aos-duration="1000"> <!-- howWeDoIt -->
-                <h1><em>How</em> we do it</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                
-                <img src="images/synopsis/img2.png" data-aos="fade-right" data-aos-duration="1000">
-            </div>
-
-            <div class="why" data-aos="fade-right" data-aos-duration="1000"> <!-- whyWeDoIt -->
-                <h1><em>Why</em> we do it</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                
-                <img src="images/synopsis/img3.png" data-aos="fade-left" data-aos-duration="1000">
-            </div>
-        </div>
+         </div>        
     </section>
 
     <section id="compatibility">
-        <!-- Content for Compatibility -->
-        <div class="services">
-            <div class="servicesText">
-                <h2 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Our technologies offer</h2>
-                <h1 data-aos="fade-left" data-aos-duration="1000" data-aos-delay="700"><span data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Enhanced</span> <br> compatibility</h1>
-                <p data-aos="fade-left" data-aos-duration="1000" data-aos-delay="800">on various high-volume platforms.</p>
-            </div>
-        </div>
-         
-        <div class="iconBoxes">
-            <div class="set1">
-                <div class="box1">
-                    <img src="images/iconBoxes/facebook.png">
-                </div>
-                <div class="placeholder"></div>
-                <div class="box2">
-                    <img src="images/iconBoxes/instagram.png">
-                </div>            
-            </div>
-    
-            <div class="set2">
-                <div class="box3">
-                    <img src="images/iconBoxes/iMessage.png">
-                </div>
-                <div class="placeholder"></div>
-                <div class="box4">
-                    <img src="images/iconBoxes/linkedin.png">
-                </div>            
-            </div>
-        </div>
-
+        <!-- Compatiblity: Live Demos -->
         <div class="prodInAction">
-            <h1 data-aos="fade-up" data-aos-duration="1000">See our product in <span data-aos="fade-up" data-aos-duration="1000">action.</span></h1>
+            <h1 data-aos="fade-up" data-aos-duration="1000">See our product in 
+                <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">action.</span>
+            </h1>
         </div>
         
         <div class="prodDemos">
             <div class="demoSet1">
-                <div class="demoBox1" data-aos="fade-in" data-aos-duration="1200">
-                    <div class="demoVideo1"></div>
+                <div class="demoBox1" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="demoVideo1">
+                        <img src="">
+                    </div>
                 </div>
     
                 <div class="demoPlaceholder"></div>
     
-                <div class="demoBox2" data-aos="fade-in" data-aos-duration="1200" data-aos-delay="200">
-                    <div class="demoVideo2"></div>
+                <div class="demoBox2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="demoVideo2">
+                        <img src="">
+                    </div>
                 </div>
             </div>
     
             <div class="demoSet2">
-                <div class="demoBox3" data-aos="fade-in" data-aos-duration="1200" data-aos-delay="200">
-                    <div class="demoVideo3"></div>
+                <div class="demoBox3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="demoVideo3">
+                        <img src="">
+                    </div>
                 </div>
     
                 <div class="demoPlaceholder"></div>
     
-                <div class="demoBox4" data-aos="fade-in" data-aos-duration="1200">
-                    <div class="demoVideo4"></div>
+                <div class="demoBox4" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="demoVideo4">
+                        <img src="">
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Compatiblity -->
+        <div class="iconBoxes">
+            <div class="boxWrapper">
+                <div class="box1" data-aos="fade-down" data-aos-duration="1000">
+                    <img src="images/iconBoxes/facebook.png">
+                </div>
+                <div class="box2" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="100">
+                    <img src="images/iconBoxes/iMessage.png">
+                </div>
+                <div class="box3" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="150">
+                    <img src="images/iconBoxes/instagram.png">
+                </div>
+                <div class="box4" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="images/iconBoxes/linkedin.png">
+                </div>
+            </div>
+    
+            <div class="iconBoxText">
+                <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="235">Where <span>Versa</span> works</h1>
+                <h2 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="250">Our technologies offer enhanced compatibility on various high volume plaforms for diverse deliveries.</h2>
             </div>
         </div>
     </section>
 
     <section id="reviews">
-        <!-- Content for Reviews -->
+        <div class="reviews"></div>
     </section>
 
     <section id="pricing">
         <!-- Content for Pricing -->
+    </section>
+
+    <section id="contact">
+        <div class="contact">
+            <div class="contactInfo" data-aos="fade-up" data-aos-duration="1000">
+                <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">Request a <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">consultation</span></h1>
+    
+                <div class="contactInfoInputs">
+                    <div class="contactInfoInputsSection1">
+                        <div class="firstNameComp" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                            <div class="entryAreaContainer">
+                                <div class="entryArea">
+                                    <input class="entryAreaInput" type="text" required>
+                                    <div class="labelLine">First Name</div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="lastNameComp" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                            <div class="entryAreaContainer">
+                                <div class="entryArea">
+                                    <input class="entryAreaInput" type="text" required>
+                                    <div class="labelLine">Last Name</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="contactInfoInputsSection2">
+                        <div class="businessEmailComp" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700">
+                            <div class="entryAreaContainer">
+                                <div class="entryArea">
+                                    <input class="entryAreaInput" type="text" required>
+                                    <div class="labelLine">Business Email</div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="companyNameComp" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
+                            <div class="entryAreaContainer">
+                                <div class="entryArea">
+                                    <input class="entryAreaInput" type="text" required>
+                                    <div class="labelLine">Company Name</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <button data-aos="fade" data-aos-duration="1000" data-aos-delay="2000">SUBMIT</button>
+                <h2 data-aos="fade" data-aos-duration="1000" data-aos-delay="2200">
+                    <a href="mailto:aimetechologies2023@gmail.com">aimetechologies2023@gmail.com</a> 
+                    • (469) 238-6312
+                </h2>
+            </div>
+        </div>
     </section>
 </body>
 </html>
