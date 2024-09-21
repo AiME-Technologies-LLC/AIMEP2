@@ -917,7 +917,9 @@ html {
 .iconBoxes {
     display: flex;
     position: absolute;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
 
     height: 100vh;
     width: 100vw;
@@ -994,15 +996,14 @@ html {
 
 .iconBoxText {
     display: flex;
-    position: absolute;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
+    margin-top: -10px;
+
     height: fit-content;
     width: fit-content;
-
-    top: 500px;
 
     gap: 15px;
 
