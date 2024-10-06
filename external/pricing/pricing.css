@@ -1,0 +1,403 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    transition: 0.75s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+body {
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Animations */
+@keyframes bounceColor {
+    0% {
+        transform: translateY(-10px);
+    }
+
+    16.7% {
+        transform: translateY(10px);
+        
+        background-color: #1266D9;
+    }
+
+    33.4% {
+        transform: translateY(-10px);
+    }
+
+    50.1% {
+        transform: translateY(10px);
+        
+        background-color: #F8BB3D;
+    }
+
+    66.8% {
+        transform: translateY(-10px);
+    }
+
+    83.5% {
+        transform: translateY(10px);
+        
+        background-color: #EA4334;
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes colorChange {
+    20% {
+        color: #1266D9;
+
+        filter: drop-shadow(0px 0px 5px rgba(18, 102, 217, 0.4));
+    }
+
+    40% {
+        color: #F8BB3D;
+
+        filter: drop-shadow(0px 0px 5px rgba(248, 187, 61, 0.4));
+    }
+
+    60% {
+        color: #EA4334;
+
+        filter: drop-shadow(0px 0px 5px rgba(234, 67, 52, 0.4));
+    }
+
+    80% {
+        color: #3FBC54;
+
+        filter: drop-shadow(0px 0px 5px rgba(63, 188, 84, 0.4));
+    }
+
+    100% {
+        color: #1266D9;
+
+        filter: drop-shadow(0px 0px 5px rgba(18, 102, 217, 0.4));
+    }
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-3px);
+    }
+
+    100% {
+        transform: translateY(3px);
+    }
+}
+
+@keyframes gradient {
+    100% {
+        background-position: right;
+    }
+}
+
+@keyframes morph {
+    33% {
+        transform: translateY(-2px);
+    }
+
+    66% {
+        transform: translateY(2px);
+    }
+
+    100% {
+        border-radius: 2px;
+    }
+}
+
+@keyframes pulse {
+    100% {
+        filter: blur(150px);
+
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes scrollLeft {
+    to {
+        left: -200px;
+    }
+}
+
+@keyframes scrollRight {
+    to {
+        right: -200px;
+    }
+}
+
+@keyframes waveAnimation {
+    0% {
+        transform: rotate( 0.0deg)
+    }
+    
+    10% {
+        transform: rotate(14.0deg)
+    }
+    
+    20% {
+        transform: rotate(-8.0deg)
+    }
+    
+    30% {
+        transform: rotate(14.0deg)
+    }
+    
+    40% {
+        transform: rotate(-4.0deg)
+    }
+    
+    50% {
+        transform: rotate(0.0deg)
+    }
+    
+    100% {
+        transform: rotate(0.0deg)
+    }
+}
+
+/* Navigation Bar: Header */
+.nav {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    flex-direction: row;
+
+    height: 70px;
+    width: 100%;
+
+    z-index: 1;
+
+    transition: 0.5s ease;
+}
+
+.navScrolled {
+    height: 50px;
+    
+    background-color: rgb(255, 255, 255);
+
+    box-shadow: 0px 5px 5cap rgba(207, 206, 206, 0.5);
+}
+
+.navContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    flex-direction: row;
+
+    height: fit-content;
+    width: 100%;
+
+    gap: 10%;
+}
+
+.navLogo {
+    justify-self: flex-start;
+    
+    height: 30px;
+
+    transition: ease 0.5s;
+
+    filter: brightness(0);
+
+    cursor: pointer;
+}
+
+.navLogo:hover {
+    filter: brightness(1);
+}
+
+.navLogoScrolled {
+    opacity: 0%;
+    
+    transform: translateY(-100px);
+
+    transition: 
+        opacity 0.5s ease, 
+        transform 2s ease
+    ;
+
+    background: transparent;
+}
+
+.navLogo2 {
+    display: flex;
+    margin-top: 2px;
+    padding: 5px;
+    
+    height: 35px;
+
+    transition: ease 1s;
+
+    transform: translateY(-100px);
+
+    background: transparent;
+}
+
+.navLinksContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-wrap: nowrap;
+
+    transition: 3s ease;
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    background: transparent;
+
+    transform: translateX(29px);
+}
+
+.navLinksScrolled {
+    opacity: 80%;
+    transition: opacity 1s ease;
+
+    background: transparent;
+}
+
+.section1, .section2 {
+    display: flex;
+    transition: 2s ease;
+}
+
+.section1 li,
+.section2 li  {
+    display: inline-block;
+    padding: 0px 25px;
+    
+    transition: all 0.3s ease;
+
+    background: transparent;
+}
+
+.section1 li a,
+.section2 li a  {
+    display: inline-block;
+    position: relative;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: black;
+    /* color: rgba(237, 240, 241, 0.5); */
+    
+    text-decoration: none;
+    text-transform: capitalize;
+
+    transition: all 0.5s ease;
+
+    background: transparent;
+}
+
+.section1 li a:hover,
+.section2 li a:hover {
+    border-radius: 5px;
+
+    font-weight: 500;
+    letter-spacing: 0.5px;
+
+    color: transparent;
+    background: linear-gradient(90deg, #E4795A, #FFBB41);
+    -webkit-background-clip: text;
+}
+
+.section1Scrolled {
+    text-align: left;
+    
+    transform: translateX(-110px);
+
+    background: transparent;
+}
+
+.section2Scrolled {
+    text-align: right;
+    
+    transform: translateX(110px);
+
+    background: transparent;
+}
+
+.navButtons {
+    display: flex;
+    justify-self: flex-end;
+
+    gap: 10px;
+
+    transition: ease 0.5s;
+}
+
+.navButtons button {
+    height: 40px;
+    width: 90px;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.navButtons button:active {
+    transform: scale(0.9)
+}
+
+.navButtons button:first-child {
+    border: none;
+
+    background-color: transparent;
+}
+
+.navButtons button:first-child:hover {
+    background-color: #eeeeee;
+}
+
+.navButtons button:last-child {
+    border: none;
+
+    color: white;
+
+    background-color: #1e1e1e;
+}
+
+.navButtons button:last-child:hover {
+    filter: drop-shadow(-5px 3px 8px rgba(77, 77, 77, 0.3));
+}
+
+.navButtonsScrolled {
+    opacity: 0%;
+    
+    transform: translateY(-100px);
+
+    transition: 
+        opacity 0.5s ease, 
+        transform 2s ease
+    ;
+
+    background: transparent;
+}
